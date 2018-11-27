@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-// radium for certain css psuedo-selectors, { StyleRoot } for things like media queries
-import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 
@@ -58,11 +56,6 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      // wrap psuedo-selectors as strings not just :, below is radium being used
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
     }
 
     let persons = null;
@@ -82,11 +75,6 @@ class App extends Component {
       );
 
       style.backgroundColor = 'red';
-      // below is another example of radium being used... a style is being overwritten
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
     }
 
     // by adding the .join(' ') it turns the array into a string "red bold"
@@ -102,8 +90,6 @@ class App extends Component {
 
 
     return (
-      // Need to wrap the entire application in <StyleRoot></StyleRoot>
-      <StyleRoot>
       <div className="App">
         <h1>Hi I'm a react app</h1>
         {/* classes as a class name becomes classes.join b/c classes is a array not a string anymore */}
@@ -114,10 +100,8 @@ class App extends Component {
         {persons}
             
       </div>
-      </StyleRoot>
     );
   }
 }
 
-// Higher order component (essentially a component wrapping another component, adding extra functions)
-export default Radium(App);
+export default App;
